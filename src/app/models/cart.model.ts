@@ -7,6 +7,6 @@ export interface CartItem{
     product: string;
     name: string;
     price: number;
-    quanitity: number;
+    quantity: number;
     id: number;
 }

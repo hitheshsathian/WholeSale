@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit, OnDestroy{
       product: product.image,
       name: product.title,
       price: product.price,
-      quanitity: 1,
+      quantity: 1,
       id: product.id
     });
 

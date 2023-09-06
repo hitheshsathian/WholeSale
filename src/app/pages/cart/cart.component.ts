@@ -14,7 +14,7 @@ export class CartComponent implements OnInit{
     product: 'https://via.placeholder.com/150',
     name: 'snickers',
     price: 150,
-    quanitity: 1,
+    quantity: 1,
     id: 1,
   }
   ]};
@@ -61,14 +61,16 @@ export class CartComponent implements OnInit{
   }
 
   onCheckout(): void {
-    this.http.post('http://localhost:4200/checkout',
-    {items: this.cart.items}).subscribe(async(res: any) => {
-      let stripe = await loadStripe('pk_test_51NmOzcL1LJrAFAKBtiJWKj1ZS2xM8FF43k0SfSqjRq6LvcZcFLUq6l7oxkSfYG50Jy1IBxVSaEdjORIMOCeiD39e00InQwye6o');
-      stripe?.redirectToCheckout({
-        sessionId: res.id
+    this.http
+      .post('http://localhost:4242/checkout', {
+        items: this.cart.items,
       })
-    });
-
+      .subscribe(async (res: any) => {
+        let stripe = await loadStripe('pk_test_51NmOzcL1LJrAFAKBtiJWKj1ZS2xM8FF43k0SfSqjRq6LvcZcFLUq6l7oxkSfYG50Jy1IBxVSaEdjORIMOCeiD39e00InQwye6o');
+        stripe?.redirectToCheckout({
+          sessionId: res.id,
+        });
+      });
   }
 
 }
